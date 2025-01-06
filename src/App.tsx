@@ -1,35 +1,716 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { User2, Activity, Cpu } from "lucide-react";
+import Butterfly2 from "@/assets/butterfly-2.png";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="min-h-screen bg-gray-50">
+      <header className="bg-white shadow-sm">
+        <div className="container mx-auto px-4 py-6">
+          <div className="flex flex-col md:flex-row items-center gap-6">
+            <img
+              src="/placeholder.svg"
+              alt="Profile Picture"
+              width={120}
+              height={120}
+              className="rounded-full border-4 border-gray-200"
+            />
+            <div className="text-center md:text-left">
+              <h1 className="text-2xl md:text-3xl font-bold">
+                Shivu Kallanagoudra
+              </h1>
+              <p className="text-gray-600 mt-2">Student</p>
+              <p className="text-gray-600">
+                Department of Electronics and Communication Engineering
+              </p>
+              <p className="text-gray-600">KLE Technological University</p>
+            </div>
+          </div>
+        </div>
+      </header>
 
-export default App
+      <main className="container mx-auto px-4 py-8">
+        <Tabs defaultValue="profile" className="space-y-4">
+          <TabsList className="grid grid-cols-3 gap-4">
+            <TabsTrigger value="profile" className="flex items-center gap-2">
+              <User2 className="w-4 h-4" />
+              Profile
+            </TabsTrigger>
+            <TabsTrigger value="dsp" className="flex items-center gap-2">
+              <Cpu className="w-4 h-4" />
+              DSP
+            </TabsTrigger>
+            <TabsTrigger value="activities" className="flex items-center gap-2">
+              <Activity className="w-4 h-4" />
+              Activities
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="profile">
+            <Tabs defaultValue="about" className="space-y-4">
+              <TabsList className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <TabsTrigger value="about">About</TabsTrigger>
+                <TabsTrigger value="education">Education</TabsTrigger>
+                <TabsTrigger value="contact">Contact</TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="about" className="space-y-4">
+                <Card>
+                  <CardContent className="p-6">
+                    <h2 className="text-xl font-semibold mb-4">About Me</h2>
+                    <p className="text-gray-600">
+                      I am a student at KLE Technological University, where I am
+                      pursuing a Bachelor of Technology in Electronics and
+                      Communication Engineering. My academic journey has been
+                      focused on gaining a strong foundation in electronics and
+                      communication systems, with a particular interest in
+                      digital signal processing.
+                    </p>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              <TabsContent value="education" className="space-y-4">
+                <Card>
+                  <CardContent className="p-6">
+                    <h2 className="text-xl font-semibold mb-4">Education</h2>
+                    <ul className="list-disc list-inside space-y-2 text-gray-600">
+                      <li>
+                        B.Tech in Electronics and Communication Engineering
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+              <TabsContent value="contact" className="space-y-4">
+                <Card>
+                  <CardContent className="p-6">
+                    <h2 className="text-xl font-semibold mb-4">Contact</h2>
+                    <ul className="list-disc list-inside space-y-2 text-gray-600">
+                      <li>Email: 01fe22bev042@kletech.ac.in</li>
+                      <li>Phone: +91 90192 58728</li>
+                      <li>
+                        Address: KLE Technological University, Hubballi,
+                        Karnataka, India
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+            </Tabs>
+          </TabsContent>
+
+          <TabsContent value="dsp">
+            <Tabs defaultValue="butterfly" className="space-y-4">
+              <TabsList className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <TabsTrigger value="butterfly">Butterfly Model</TabsTrigger>
+                <TabsTrigger value="dft">DFT vs IDFT</TabsTrigger>
+                <TabsTrigger value="fft">FFT vs IFFT</TabsTrigger>
+                <TabsTrigger value="overlap">Overlap Methods</TabsTrigger>
+                <TabsTrigger value="filters">IIR & FIR</TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="butterfly">
+                <Card>
+                  <CardContent className="p-6">
+                    <h2 className="text-xl font-semibold mb-4">
+                      Butterfly Method
+                    </h2>
+                    <div className="space-y-4">
+                      <div className="flex gap-10 flex-wrap">
+                        <img
+                          src="https://lh5.googleusercontent.com/HY2_fC74zc4dC36v6pPqyK_Abu0C9ot9Uow-HYPRVVpNL1rhJ0t5f5urFduowJJj0Fn4WiTTOJtnxaGE9jRLDiP6NEsZcTTdKUfLIRx7tvPsmqi1k-ZCoTDdV9dKGyfK1Q=w1280"
+                          alt="Butterfly diagram"
+                          className="rounded-lg w-[300px]"
+                        />
+                        <img
+                          src={Butterfly2}
+                          alt="Butterfly diagram"
+                          className="rounded-lg w-[300px]"
+                        />
+                      </div>
+                      <p className="text-gray-600">
+                        The Butterfly Method is a computational technique used
+                        in the Fast Fourier Transform (FFT) to efficiently
+                        compute the Discrete Fourier Transform (DFT). It is
+                        named "butterfly" because of the shape of the flow
+                        diagram depicting the computational structure of the
+                        algorithm. The method exploits symmetry and periodicity
+                        properties of the complex exponential in the DFT to
+                        reduce computational redundancy.
+                      </p>
+
+                      <ul className="list-disc list-inside space-y-2 text-gray-600">
+                        <li>
+                          <strong>Purpose</strong>- Efficient computation of DFT
+                          using divide-and-conquer approach.
+                        </li>
+                        <li>
+                          <strong>Process</strong>- Divide input → Apply
+                          butterfly operations → Combine results.
+                        </li>
+                        <li>
+                          <strong>Advantages</strong>- Computational efficiency,
+                          scalability, supports real-time processing.
+                        </li>
+                        <li>
+                          <strong>Disadvantages</strong>- Requires specific
+                          input sizes, complex implementation, numerical
+                          precision issues.
+                        </li>
+                        <li>
+                          <strong>Applications</strong>- Audio processing,
+                          communications, image analysis, radar, and medical
+                          imaging.
+                        </li>
+                      </ul>
+                      <p className="text-gray-600">
+                        The butterfly method is a foundational tool in DSP,
+                        enabling fast and efficient computation of Fourier
+                        transforms. By breaking down large problems into smaller
+                        ones, it facilitates real-time signal processing in
+                        various practical applications.
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              <TabsContent value="dft">
+                <Card>
+                  <CardContent className="p-6">
+                    <h2 className="text-xl font-semibold mb-4">DFT vs IDFT</h2>
+                    <div className="space-y-4">
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div>
+                          <h3 className="text-lg font-semibold mb-2">
+                            DFT (Discrete Fourier Transform)
+                          </h3>
+                          <img
+                            src="https://lh3.googleusercontent.com/MMWo2oW9_kqPX1xrbBI1KBqhTKI8L3kQuOTsDfSK_g7RnSbn35wZz5aiw8ejY7yhDjZ3jdMu0A4908YButFEy-5yrRV6b3uqmlXnkDCyyi7dOOkKAqcGiSUIpCpxIxopFQ=w1280"
+                            alt=""
+                            className="w-[300px]"
+                          />
+                          <img
+                            src="https://lh3.googleusercontent.com/NKAjp-5rTxDypkxtUCF5h560b-MFYFjYJRCl34cwbFdiut7-3_cN8L4ZpS67l54LtXgrtqQLnJSpwJS9uFQp5nLKCBgCxrBm8GdC0x5qN7DiMMIgEeUNh-Uc5q8VHe3WxA=w1280"
+                            alt=""
+                            className="w-[300px]"
+                          />
+                          <p className="text-gray-600">
+                            The Discrete Fourier Transform (DFT) is a
+                            mathematical technique used in Digital Signal
+                            Processing (DSP) to analyze the frequency content of
+                            discrete-time signals. It converts a finite sequence
+                            of equally spaced samples from the time domain into
+                            a sequence of complex numbers representing the
+                            signal's frequency components.
+                          </p>
+                          <ul className="list-disc list-inside space-y-2 text-gray-600">
+                            <li>
+                              <strong>Purpose</strong>- Frequency analysis,
+                              signal transformation, spectral representation.
+                            </li>
+                            <li>
+                              <strong>Process</strong>- Sample signal → Compute
+                              DFT → Analyze magnitude/phase → Optionally apply
+                              IDFT.
+                            </li>
+                            <li>
+                              <strong>Advantages</strong>- Accurate frequency
+                              analysis, simple computations, wide applications,
+                              FFT-ready.
+                            </li>
+                            <li>
+                              <strong>Disadvantages</strong>- High computational
+                              cost, limited resolution, spectral leakage,
+                              aliasing.
+                            </li>
+                          </ul>
+                          <p className="text-gray-600 mt-2">
+                            By understanding its purpose, process, advantages,
+                            and disadvantages, the DFT becomes a valuable tool
+                            in digital signal processing and related fields.
+                          </p>
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-semibold mb-2">
+                            IDFT (Inverse Discrete Fourier Transform)
+                          </h3>
+                          <img
+                            src="https://lh4.googleusercontent.com/zg-LX9hSpDt6WBGuSJiiDZ_Tg0jv9BB-H5xc4sd33dlHxuzr0vA8u6CX_IH9Hw3rkPnI4N2S6MTv7oGHqdIBPJ3s9c4pIY3xV1VWQln3iiJ0ghMfz2s6F4xoiiXqZX7EpA=w1280"
+                            alt=""
+                            className="w-[300px]"
+                          />
+                          <img
+                            src="https://lh4.googleusercontent.com/0hi27WQKt069qda36CZvO7AnPEpuGNOlzHIoM-7XdWL-CUpng7ZDfckRJPyNH4ebrYKo-oe4g0bqoSWRpKnRgBovwm3n8-TYC5efC8Q0fH8hirhnl5RZHxk7ujDnwpXb=w1280"
+                            alt=""
+                            className="w-[300px]"
+                          />
+                          <p className="text-gray-600">
+                            The Inverse Discrete Fourier Transform (IDFT) is a
+                            mathematical operation that transforms
+                            frequency-domain data back into the time-domain
+                            representation. It is the counterpart to the
+                            Discrete Fourier Transform (DFT) and plays a
+                            critical role in reconstructing the original signal
+                            from its frequency components
+                          </p>
+                          <ul className="list-disc list-inside space-y-2 text-gray-600">
+                            <li>
+                              <strong>Purpose</strong>- Reconstruct original
+                              signal, facilitate time-domain analysis.
+                            </li>
+                            <li>
+                              <strong>Process</strong>- Start with X[k] → Apply
+                              IDFT formula → Get x[n]
+                            </li>
+                            <li>
+                              <strong>Advantages</strong>- Accurate
+                              reconstruction, complements DFT, practical in DSP
+                              tasks.
+                            </li>
+                            <li>
+                              <strong>Disadvantages</strong>- Computationally
+                              expensive, noise-sensitive, resolution-dependent.
+                            </li>
+                          </ul>
+                          <p className="text-gray-600 mt-2">
+                            By understanding the IDFT's purpose, process,
+                            advantages, and disadvantages, you can effectively
+                            use it in various signal processing applications.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              <TabsContent value="fft">
+                <Card>
+                  <CardContent className="p-6">
+                    <h2 className="text-xl font-semibold mb-4">FFT vs IFFT</h2>
+                    <div className="space-y-4">
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div>
+                          <h3 className="text-lg font-semibold mb-2">
+                            FFT (Fast Fourier Transform)
+                          </h3>
+                          <img
+                            src="https://lh3.googleusercontent.com/Vu0Rp6d82YpMDPUWcqpLLDkWa0gfkMwdTU_IM9nkopD5SWx-UqvshWruYk05TquwUON1clB5J7T_ephY8eXNCS3qQQYRroI1N3dIYckT5tVFjF6L_AAHjjKJ1eyYWi60Cg=w1280"
+                            alt=""
+                            className="w-[300px]"
+                          />
+                          <img
+                            src="https://lh6.googleusercontent.com/QiiYLUMQHLj1oebWvs5FLL43JZdEQZLSqzmWaFu8glloaSyqmLFYisHmFjC2e47r34WLrrUgOSl10JwghP4ZIeTMlYVk60-V7uV53llzFDp4G_Oy8RHKMspItLaumSm3Dg=w1280"
+                            alt=""
+                            className="w-[300px]"
+                          />
+                          <p className="text-gray-600">
+                            The Fast Fourier Transform (FFT) is an efficient
+                            algorithm to compute the Discrete Fourier Transform
+                            (DFT) and its inverse. It significantly reduces the
+                            computational complexity of the DFT, making it a
+                            cornerstone of modern Digital Signal Processing
+                            (DSP).
+                          </p>
+                          <ul className="list-disc list-inside space-y-2 text-gray-600">
+                            <li>
+                              <strong>Purpose</strong>- Efficient computation of
+                              DFT for frequency analysis and signal processing
+                              tasks.
+                            </li>
+                            <li>
+                              <strong>Process</strong>- Divide signal → Compute
+                              sub-DFTs → Combine results via butterfly
+                              operations.
+                            </li>
+                            <li>
+                              <strong>Advantages</strong>- Fast, efficient,
+                              widely applicable, supports real-time processing.
+                            </li>
+                            <li>
+                              <strong>Disadvantages</strong>- Limited by signal
+                              length, susceptible to numerical errors and
+                              spectral leakage.
+                            </li>
+                          </ul>
+                          <p className="text-gray-600">
+                            The FFT has revolutionized signal processing by
+                            enabling fast, efficient, and practical analysis of
+                            signals in both research and real-world
+                            applications. Understanding its purpose, process,
+                            and limitations helps optimize its use in various
+                            DSP tasks.
+                          </p>
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-semibold mb-2">
+                            IFFT (Inverse Fast Fourier Transform)
+                          </h3>
+                          <img
+                            src="https://lh5.googleusercontent.com/1Qb95_wagJSTd3yNY1MvasARzIs6Q47rTtwNfrwUH4LuHTGeg5K88Jbs6nngdX2f_UpklNHeOlywN8DXMBY9yvFb1B7PV5U3fQSm5H-mKO8YigO06GfsWY8ZGOAImSHWdg=w1280"
+                            alt=""
+                            className="w-[300px]"
+                          />
+                          <p className="text-gray-600">
+                            The Inverse Fast Fourier Transform (IFFT) is an
+                            algorithm that efficiently computes the Inverse
+                            Discrete Fourier Transform (IDFT). It is a
+                            counterpart to the Fast Fourier Transform (FFT) and
+                            is widely used for reconstructing time-domain
+                            signals from their frequency-domain representations.
+                          </p>
+                          <ul className="list-disc list-inside space-y-2 text-gray-600">
+                            <li>
+                              <strong>Purpose</strong>- Efficient reconstruction
+                              of time-domain signals from frequency-domain data.
+                            </li>
+                            <li>
+                              <strong>Process</strong>- Input X[k]X[k]X[k] →
+                              Compute via IFFT → Output x[n]x[n]x[n].
+                            </li>
+                            <li>
+                              <strong>Advantages</strong>- Fast, accurate,
+                              supports real-time reconstruction, compatible with
+                              FFT.
+                            </li>
+                            <li>
+                              <strong>Disadvantages</strong>- Signal length
+                              constraints, numerical precision issues,
+                              susceptible to leakage.
+                            </li>
+                          </ul>
+                          <p className="text-gray-600">
+                            The IFFT is a critical tool in digital signal
+                            processing, enabling fast and accurate
+                            reconstruction of time-domain signals. Paired with
+                            FFT, it facilitates efficient bidirectional
+                            transformations for a wide range of applications.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              <TabsContent value="overlap">
+                <Card>
+                  <CardContent className="p-6">
+                    <h2 className="text-xl font-semibold mb-4">
+                      Overlap Save and Overlap Add Method
+                    </h2>
+                    <div className="space-y-4">
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div>
+                          <h3 className="text-lg font-semibold mb-2">
+                            Overlap Save Method
+                          </h3>
+                          <img
+                            src="https://lh5.googleusercontent.com/RKx_adEQYufxfe022g7lmx5czHjOeQ52RwibmSaukVHnwOma6FHUMkjoxUqVB2XGAyPSCSH8nChXfh7spImLnY7jPRD6gcswWXZXKNFlKL2PCM5CG3YfXsMpEcfYm4s6jw=w1280"
+                            alt=""
+                            className="w-[300px]"
+                          />
+                          <img
+                            src="https://lh3.googleusercontent.com/owyJIOWu4OOWSx2OuzuwnGH7azoSjOTD1qxi6_8UQwK3NsYqWCjke5B4pCrLv7ee8Ej70TJ3EFQNVi-jxiBPnaFHyd2le6twsZOYl1IilvoYWvkXcfH5UHYQiRXcx3d5iQ=w1280"
+                            alt=""
+                            className="w-[300px]"
+                          />
+                          <img
+                            src="https://lh3.googleusercontent.com/u5Y9klTuQcI--bl3C00g-mMANQxlptfPWrKRRv_fjyOQzuNw3rxH85ey1DGdttn0s3EQNHwYC8dOgxhy0TS9hic4moIlvXWBUCPPpfyA-WRI1kCfGofNSjkLPsLD43LnLA=w1280"
+                            alt=""
+                            className="w-[300px]"
+                          />
+                          <ol className="list-decimal list-inside space-y-2 text-gray-600 mt-2">
+                            <li>
+                              <strong>Purpose</strong>: Efficient method for{" "}
+                              <strong>linear convolution</strong> using{" "}
+                              <strong>FFT</strong> in Digital Signal Processing
+                              (<strong>DSP</strong>).
+                            </li>
+                            <li>
+                              <strong>Process: </strong>
+                              <ul className="list-disc list-inside space-y-2 text-gray-600 pl-3">
+                                <li>
+                                  <strong>Segment Input Signal</strong>: Divide
+                                  into overlapping blocks of length NNN
+                                  (N=L+M−1N = L + M - 1N=L+M−1).
+                                </li>
+                                <li>
+                                  <strong>Overlap: </strong>Each segment
+                                  overlaps by L−1L-1L−1 samples (LLL = filter
+                                  length).
+                                </li>
+                                <li>
+                                  FFT: Compute FFT of each segment and the
+                                  impulse response.
+                                </li>
+                                <li>
+                                  Multiply: Perform pointwise multiplication in
+                                  the frequency domain.
+                                </li>
+                                <li>
+                                  IFFT: Apply Inverse FFT to get the filtered
+                                  segment.
+                                </li>
+                                <li>
+                                  Discard Overlap: Remove the first L−1L-1L−1
+                                  samples from each segment.
+                                </li>
+                                <li>
+                                  Combine Segments: Concatenate valid outputs to
+                                  form the final signal.
+                                </li>
+                              </ul>
+                            </li>
+                            <li>
+                              <strong>Advantages: </strong>
+                              <ul className="list-disc list-inside space-y-2 text-gray-600 pl-3">
+                                <li>
+                                  Computational efficiency for long signals.
+                                </li>
+                                <li>Suitable for real-time filtering.</li>
+                              </ul>
+                            </li>
+                            <li>
+                              <strong>Disadvantages: </strong>
+                              <ul className="list-disc list-inside space-y-2 text-gray-600 pl-3">
+                                <li>Requires careful overlap management.</li>
+                                <li>SHandling edge effects can be complex.</li>
+                              </ul>
+                            </li>
+                            <li>
+                              <strong>Applications: </strong>
+                              <ul className="list-disc list-inside space-y-2 text-gray-600 pl-3">
+                                <li>Radar and sonar systems</li>
+                                <li>Wireless communication systems</li>
+                              </ul>
+                            </li>
+                          </ol>
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-semibold mb-2">
+                            Overlap Add Method
+                          </h3>
+                          <img
+                            src="https://lh3.googleusercontent.com/dWYtdNcz-l7ENGeDNUcP1SEiXq_VCKt1D8kVA_LZlUxA6w5aSTQUa4yHJ8G9fPunQGaXiMXEf-MzwOK2xpagYXubeyv10F5fwasvm2pexIb9ifuqG_1AlvnIk5vTlOJtjQ=w1280"
+                            alt=""
+                            className="w-[300px]"
+                          />
+                          <img
+                            src="https://lh5.googleusercontent.com/faLOsSFIqALMzsjSflgCFf5tejhcSkdmssysiSYps7vVmjtMZrvv7qaUHguKUHfkrM58iJBuZSIX8LqyzTL4wp84r6nqwHZMdqbLuAR2uIABOyXRWq2B5w0mlVo5eQY6vw=w1280"
+                            alt=""
+                            className="w-[300px]"
+                          />
+                          <img
+                            src="https://lh6.googleusercontent.com/ZDkK7Ru2dBYz1q_JwZzNKsGf5EYVJLqH-fZ4hig8XzhsTBXEU5OxHrSnITge9_L_UyddJNJL4RoEvqGr3nAeWWq5Atu1JNDHg8ywdMBJPwhQcX4jADm3uhaXjTm5UcBFgg=w1280"
+                            alt=""
+                            className="w-[300px]"
+                          />
+                          <ol className="list-decimal list-inside space-y-2 text-gray-600 mt-5">
+                            <li>
+                              <strong>Purpose</strong>: Efficient method for{" "}
+                              <strong>linear convolution</strong> using{" "}
+                              <strong>FFT</strong> in Digital Signal Processing
+                              (<strong>DSP</strong>).
+                            </li>
+                            <li>
+                              <strong>Process: </strong>
+                              <ul className="list-disc list-inside space-y-2 text-gray-600 pl-3">
+                                <li>
+                                  Segment Input Signal: Divide into
+                                  non-overlapping blocks of length MMM.
+                                </li>
+                                <li>
+                                  Zero-Pad: Add L−1L-1L−1 zeros to each segment
+                                  (LLL = filter length).
+                                </li>
+                                <li>
+                                  FFT: Compute FFT of each zero-padded segment
+                                  and the impulse response.
+                                </li>
+                                <li>
+                                  Multiply: Perform pointwise multiplication in
+                                  the frequency domain.
+                                </li>
+                                <li>
+                                  IFFT: Apply Inverse FFT to get the filtered
+                                  segment.
+                                </li>
+                                <li>
+                                  Add Overlapping Outputs: Overlapping regions
+                                  from adjacent segments are added together.
+                                </li>
+                                <li>
+                                  Combine Segments: Concatenate the final
+                                  segments to form the output signal.
+                                </li>
+                              </ul>
+                            </li>
+                            <li>
+                              <strong>Advantages: </strong>
+                              <ul className="list-disc list-inside space-y-2 text-gray-600 pl-3">
+                                <li>
+                                  Computational efficiency for long signals.
+                                </li>
+                                <li>Suitable for real-time filtering.</li>
+                              </ul>
+                            </li>
+                            <li>
+                              <strong>Disadvantages: </strong>
+                              <ul className="list-disc list-inside space-y-2 text-gray-600 pl-3">
+                                <li>
+                                  Overlapping addition management is required.
+                                </li>
+                                <li>Handling edge effects can be tricky..</li>
+                              </ul>
+                            </li>
+                            <li>
+                              <strong>Applications: </strong>
+                              <ul className="list-disc list-inside space-y-2 text-gray-600 pl-3">
+                                <li>Radar and sonar systems</li>
+                                <li>Wireless communication systems</li>
+                              </ul>
+                            </li>
+                          </ol>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              <TabsContent value="filters">
+                <Card>
+                  <CardContent className="p-6">
+                    <h2 className="text-xl font-semibold mb-4">
+                      IIR and FIR Filters
+                    </h2>
+                    <div className="space-y-4">
+                      <img
+                        src="/iir-fir-filters.png"
+                        alt="IIR and FIR Filters"
+                        width={800}
+                        height={400}
+                        className="rounded-lg"
+                      />
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div>
+                          <h3 className="text-lg font-semibold mb-2">
+                            IIR (Infinite Impulse Response) Filters
+                          </h3>
+                          <p className="text-gray-600">
+                            IIR filters are digital filters with infinite
+                            impulse response. They use feedback and can achieve
+                            a given filtering characteristic using less memory
+                            and calculations than a similar FIR filter.
+                          </p>
+                          <ul className="list-disc list-inside space-y-2 text-gray-600 mt-2">
+                            <li>Can be unstable due to feedback</li>
+                            <li>
+                              More efficient in terms of computation and memory
+                            </li>
+                            <li>Non-linear phase response</li>
+                            <li>Examples: Butterworth, Chebyshev filters</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-semibold mb-2">
+                            FIR (Finite Impulse Response) Filters
+                          </h3>
+                          <p className="text-gray-600">
+                            FIR filters are digital filters with a finite
+                            impulse response. They are always stable and can
+                            have exact linear phase, but typically require more
+                            computation and memory than IIR filters for similar
+                            filtering characteristics.
+                          </p>
+                          <ul className="list-disc list-inside space-y-2 text-gray-600 mt-2">
+                            <li>Always stable</li>
+                            <li>Can have exactly linear phase</li>
+                            <li>
+                              Higher order required for sharp cutoff frequencies
+                            </li>
+                            <li>
+                              Examples: Moving average, windowed-sinc filters
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+            </Tabs>
+          </TabsContent>
+
+          <TabsContent value="activities">
+            <Card>
+              <CardContent className="p-6">
+                <h2 className="text-xl font-semibold mb-6">
+                  Academic Activities
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="space-y-3">
+                    <img
+                      src="/placeholder.svg?height=200&width=300"
+                      alt="Workshop on AI"
+                      width={300}
+                      height={200}
+                      className="rounded-lg"
+                    />
+                    <h3 className="font-semibold">AI Workshop 2023</h3>
+                    <p className="text-sm text-gray-600">
+                      Conducted a workshop on Artificial Intelligence and its
+                      applications in modern technology.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <img
+                      src="/placeholder.svg?height=200&width=300"
+                      alt="Research Presentation"
+                      width={300}
+                      height={200}
+                      className="rounded-lg"
+                    />
+                    <h3 className="font-semibold">Research Conference 2023</h3>
+                    <p className="text-sm text-gray-600">
+                      Presented research findings at the International
+                      Conference on Computer Science.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <img
+                      src="/placeholder.svg?height=200&width=300"
+                      alt="Student Project Exhibition"
+                      width={300}
+                      height={200}
+                      className="rounded-lg"
+                    />
+                    <h3 className="font-semibold">Project Exhibition 2023</h3>
+                    <p className="text-sm text-gray-600">
+                      Organized and supervised the annual student project
+                      exhibition showcasing innovative solutions.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+        </Tabs>
+      </main>
+
+      <footer className="bg-white border-t mt-8">
+        <div className="container mx-auto px-4 py-6">
+          <p className="text-center text-gray-600">
+            © {new Date().getFullYear()} - 01fe22bev042@kletech.ac.in
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+}
