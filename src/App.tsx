@@ -2,6 +2,20 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { User2, Activity, Cpu } from "lucide-react";
 import Butterfly2 from "@/assets/butterfly-2.png";
+import Butterfly1 from "@/assets/butterfly-1.jpg";
+import dft1 from "@/assets/dft-1.jpg";
+import dft2 from "@/assets/dft-2.jpg";
+import fft1 from "@/assets/fft-1.jpg";
+import fft2 from "@/assets/fft-2.jpg";
+import idft1 from "@/assets/idft-1.jpg";
+import idft2 from "@/assets/idft-2.jpg";
+import ifft1 from "@/assets/ifft-1.jpg";
+import overlap1 from "@/assets/oad-1.jpg";
+import overlap2 from "@/assets/oad-2.png";
+import overlap3 from "@/assets/oad-3.jpg";
+import osm1 from "@/assets/osm-1.jpg";
+import osm2 from "@/assets/osm-2.png";
+import osm3 from "@/assets/osm-3.jpg";
 
 export default function App() {
   return (
@@ -18,7 +32,7 @@ export default function App() {
             />
             <div className="text-center md:text-left">
               <h1 className="text-2xl md:text-3xl font-bold">
-                Shivu Kallanagoudra
+                Shiva Kallanagoudar
               </h1>
               <p className="text-gray-600 mt-2">Student</p>
               <p className="text-gray-600">
@@ -120,7 +134,7 @@ export default function App() {
                     <div className="space-y-4">
                       <div className="flex gap-10 flex-wrap">
                         <img
-                          src="https://lh5.googleusercontent.com/HY2_fC74zc4dC36v6pPqyK_Abu0C9ot9Uow-HYPRVVpNL1rhJ0t5f5urFduowJJj0Fn4WiTTOJtnxaGE9jRLDiP6NEsZcTTdKUfLIRx7tvPsmqi1k-ZCoTDdV9dKGyfK1Q=w1280"
+                          src={Butterfly1}
                           alt="Butterfly diagram"
                           className="rounded-lg w-[300px]"
                         />
@@ -187,16 +201,8 @@ export default function App() {
                           <h3 className="text-lg font-semibold mb-2">
                             DFT (Discrete Fourier Transform)
                           </h3>
-                          <img
-                            src="https://lh3.googleusercontent.com/MMWo2oW9_kqPX1xrbBI1KBqhTKI8L3kQuOTsDfSK_g7RnSbn35wZz5aiw8ejY7yhDjZ3jdMu0A4908YButFEy-5yrRV6b3uqmlXnkDCyyi7dOOkKAqcGiSUIpCpxIxopFQ=w1280"
-                            alt=""
-                            className="w-[300px]"
-                          />
-                          <img
-                            src="https://lh3.googleusercontent.com/NKAjp-5rTxDypkxtUCF5h560b-MFYFjYJRCl34cwbFdiut7-3_cN8L4ZpS67l54LtXgrtqQLnJSpwJS9uFQp5nLKCBgCxrBm8GdC0x5qN7DiMMIgEeUNh-Uc5q8VHe3WxA=w1280"
-                            alt=""
-                            className="w-[300px]"
-                          />
+                          <img src={dft1} alt="" className="w-[300px]" />
+                          <img src={dft2} alt="" className="w-[300px]" />
                           <p className="text-gray-600">
                             The Discrete Fourier Transform (DFT) is a
                             mathematical technique used in Digital Signal
@@ -237,16 +243,8 @@ export default function App() {
                           <h3 className="text-lg font-semibold mb-2">
                             IDFT (Inverse Discrete Fourier Transform)
                           </h3>
-                          <img
-                            src="https://lh4.googleusercontent.com/zg-LX9hSpDt6WBGuSJiiDZ_Tg0jv9BB-H5xc4sd33dlHxuzr0vA8u6CX_IH9Hw3rkPnI4N2S6MTv7oGHqdIBPJ3s9c4pIY3xV1VWQln3iiJ0ghMfz2s6F4xoiiXqZX7EpA=w1280"
-                            alt=""
-                            className="w-[300px]"
-                          />
-                          <img
-                            src="https://lh4.googleusercontent.com/0hi27WQKt069qda36CZvO7AnPEpuGNOlzHIoM-7XdWL-CUpng7ZDfckRJPyNH4ebrYKo-oe4g0bqoSWRpKnRgBovwm3n8-TYC5efC8Q0fH8hirhnl5RZHxk7ujDnwpXb=w1280"
-                            alt=""
-                            className="w-[300px]"
-                          />
+                          <img src={idft1} alt="" className="w-[300px]" />
+                          <img src={idft2} alt="" className="w-[300px]" />
                           <p className="text-gray-600">
                             The Inverse Discrete Fourier Transform (IDFT) is a
                             mathematical operation that transforms
@@ -297,16 +295,8 @@ export default function App() {
                           <h3 className="text-lg font-semibold mb-2">
                             FFT (Fast Fourier Transform)
                           </h3>
-                          <img
-                            src="https://lh3.googleusercontent.com/Vu0Rp6d82YpMDPUWcqpLLDkWa0gfkMwdTU_IM9nkopD5SWx-UqvshWruYk05TquwUON1clB5J7T_ephY8eXNCS3qQQYRroI1N3dIYckT5tVFjF6L_AAHjjKJ1eyYWi60Cg=w1280"
-                            alt=""
-                            className="w-[300px]"
-                          />
-                          <img
-                            src="https://lh6.googleusercontent.com/QiiYLUMQHLj1oebWvs5FLL43JZdEQZLSqzmWaFu8glloaSyqmLFYisHmFjC2e47r34WLrrUgOSl10JwghP4ZIeTMlYVk60-V7uV53llzFDp4G_Oy8RHKMspItLaumSm3Dg=w1280"
-                            alt=""
-                            className="w-[300px]"
-                          />
+                          <img src={fft1} alt="" className="w-[300px]" />
+                          <img src={fft2} alt="" className="w-[300px]" />
                           <p className="text-gray-600">
                             The Fast Fourier Transform (FFT) is an efficient
                             algorithm to compute the Discrete Fourier Transform
@@ -349,11 +339,7 @@ export default function App() {
                           <h3 className="text-lg font-semibold mb-2">
                             IFFT (Inverse Fast Fourier Transform)
                           </h3>
-                          <img
-                            src="https://lh5.googleusercontent.com/1Qb95_wagJSTd3yNY1MvasARzIs6Q47rTtwNfrwUH4LuHTGeg5K88Jbs6nngdX2f_UpklNHeOlywN8DXMBY9yvFb1B7PV5U3fQSm5H-mKO8YigO06GfsWY8ZGOAImSHWdg=w1280"
-                            alt=""
-                            className="w-[300px]"
-                          />
+                          <img src={ifft1} alt="" className="w-[300px]" />
                           <p className="text-gray-600">
                             The Inverse Fast Fourier Transform (IFFT) is an
                             algorithm that efficiently computes the Inverse
@@ -408,21 +394,9 @@ export default function App() {
                           <h3 className="text-lg font-semibold mb-2">
                             Overlap Save Method
                           </h3>
-                          <img
-                            src="https://lh5.googleusercontent.com/RKx_adEQYufxfe022g7lmx5czHjOeQ52RwibmSaukVHnwOma6FHUMkjoxUqVB2XGAyPSCSH8nChXfh7spImLnY7jPRD6gcswWXZXKNFlKL2PCM5CG3YfXsMpEcfYm4s6jw=w1280"
-                            alt=""
-                            className="w-[300px]"
-                          />
-                          <img
-                            src="https://lh3.googleusercontent.com/owyJIOWu4OOWSx2OuzuwnGH7azoSjOTD1qxi6_8UQwK3NsYqWCjke5B4pCrLv7ee8Ej70TJ3EFQNVi-jxiBPnaFHyd2le6twsZOYl1IilvoYWvkXcfH5UHYQiRXcx3d5iQ=w1280"
-                            alt=""
-                            className="w-[300px]"
-                          />
-                          <img
-                            src="https://lh3.googleusercontent.com/u5Y9klTuQcI--bl3C00g-mMANQxlptfPWrKRRv_fjyOQzuNw3rxH85ey1DGdttn0s3EQNHwYC8dOgxhy0TS9hic4moIlvXWBUCPPpfyA-WRI1kCfGofNSjkLPsLD43LnLA=w1280"
-                            alt=""
-                            className="w-[300px]"
-                          />
+                          <img src={osm1} alt="" className="w-[300px]" />
+                          <img src={osm2} alt="" className="w-[300px]" />
+                          <img src={osm3} alt="" className="w-[300px]" />
                           <ol className="list-decimal list-inside space-y-2 text-gray-600 mt-2">
                             <li>
                               <strong>Purpose</strong>: Efficient method for{" "}
@@ -494,21 +468,9 @@ export default function App() {
                           <h3 className="text-lg font-semibold mb-2">
                             Overlap Add Method
                           </h3>
-                          <img
-                            src="https://lh3.googleusercontent.com/dWYtdNcz-l7ENGeDNUcP1SEiXq_VCKt1D8kVA_LZlUxA6w5aSTQUa4yHJ8G9fPunQGaXiMXEf-MzwOK2xpagYXubeyv10F5fwasvm2pexIb9ifuqG_1AlvnIk5vTlOJtjQ=w1280"
-                            alt=""
-                            className="w-[300px]"
-                          />
-                          <img
-                            src="https://lh5.googleusercontent.com/faLOsSFIqALMzsjSflgCFf5tejhcSkdmssysiSYps7vVmjtMZrvv7qaUHguKUHfkrM58iJBuZSIX8LqyzTL4wp84r6nqwHZMdqbLuAR2uIABOyXRWq2B5w0mlVo5eQY6vw=w1280"
-                            alt=""
-                            className="w-[300px]"
-                          />
-                          <img
-                            src="https://lh6.googleusercontent.com/ZDkK7Ru2dBYz1q_JwZzNKsGf5EYVJLqH-fZ4hig8XzhsTBXEU5OxHrSnITge9_L_UyddJNJL4RoEvqGr3nAeWWq5Atu1JNDHg8ywdMBJPwhQcX4jADm3uhaXjTm5UcBFgg=w1280"
-                            alt=""
-                            className="w-[300px]"
-                          />
+                          <img src={overlap1} alt="" className="w-[300px]" />
+                          <img src={overlap2} alt="" className="w-[300px]" />
+                          <img src={overlap3} alt="" className="w-[300px]" />
                           <ol className="list-decimal list-inside space-y-2 text-gray-600 mt-5">
                             <li>
                               <strong>Purpose</strong>: Efficient method for{" "}
