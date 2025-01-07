@@ -23,13 +23,13 @@ export default function App() {
       <header className="bg-white shadow-sm">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row items-center gap-6">
-            <img
+            {/* <img
               src="/placeholder.svg"
               alt="Profile Picture"
               width={120}
               height={120}
               className="rounded-full border-4 border-gray-200"
-            />
+            /> */}
             <div className="text-center md:text-left">
               <h1 className="text-2xl md:text-3xl font-bold">
                 Shiva Kallanagoudar
