@@ -20,6 +20,13 @@ import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.png";
 import project3 from "@/assets/project-3.png";
 
+import iirBil from "@/assets/iir-bil.png";
+import iirButter from "@/assets/iir-butter.jpg";
+import iirCheby from "@/assets/iir-cheby.jpg";
+import iirImp from "@/assets/iir-imp.png";
+import fir1 from "@/assets/fir-1.png";
+import fir2 from "@/assets/fir-2.png";
+
 export default function App() {
   return (
     <div className="min-h-screen bg-gray-50">
@@ -551,56 +558,197 @@ export default function App() {
                       IIR and FIR Filters
                     </h2>
                     <div className="space-y-4">
-                      <img
-                        src="/iir-fir-filters.png"
-                        alt="IIR and FIR Filters"
-                        width={800}
-                        height={400}
-                        className="rounded-lg"
-                      />
-                      <div className="grid md:grid-cols-2 gap-6">
+                      <h4 className="text-xl mt-2 font-semibold">
+                        IIR (Infinite Impulse Response)
+                      </h4>
+                      <p className="mt-2">
+                        These filters are digital filters with feedback, meaning
+                        their output depends on current and past inputs and
+                        outputs. They are efficient, requiring fewer
+                        coefficients than FIR filters for similar performance.
+                        Common types include Butterworth, Chebyshev, and
+                        elliptic filters, used in audio processing,
+                        communications, and control systems.
+                      </p>
+                      <div className="grid grid-cols-2 gap-6 mt-5">
                         <div>
-                          <h3 className="text-lg font-semibold mb-2">
-                            IIR (Infinite Impulse Response) Filters
-                          </h3>
-                          <p className="text-gray-600">
-                            IIR filters are digital filters with infinite
-                            impulse response. They use feedback and can achieve
-                            a given filtering characteristic using less memory
-                            and calculations than a similar FIR filter.
-                          </p>
-                          <ul className="list-disc list-inside space-y-2 text-gray-600 mt-2">
-                            <li>Can be unstable due to feedback</li>
+                          <img
+                            src={iirButter}
+                            className="w-full rounded-lg"
+                            alt=""
+                          />
+                          <h5 className="text-lg mt-2 font-semibold">
+                            IIR Butterworth Filter
+                          </h5>
+                          <ul className="mt-5 pl-3 list-disc list-inside space-y-2 text-gray-600">
                             <li>
-                              More efficient in terms of computation and memory
+                              <strong>Purpose</strong>: Achieve a smooth,
+                              ripple-free frequency response in the passband for
+                              applications requiring high signal fidelity.
                             </li>
-                            <li>Non-linear phase response</li>
-                            <li>Examples: Butterworth, Chebyshev filters</li>
+                            <li>
+                              <strong>Process</strong>: Design in the analog
+                              domain using transfer functions, then convert to
+                              digital using methods like bilinear
+                              transformation.
+                            </li>
+                            <li>
+                              <strong>Advantages</strong>: Maximally flat
+                              response, stable, and suitable for general
+                              filtering.
+                            </li>
+                            <li>
+                              <strong>Disadvantages</strong>: Slower roll-off
+                              compared to Chebyshev filters, leading to a less
+                              sharp frequency cutoff.
+                            </li>
+                            <li>
+                              <strong>Applications</strong>: Audio processing,
+                              biomedical signals (ECG), and communication
+                              systems.
+                            </li>
                           </ul>
                         </div>
                         <div>
-                          <h3 className="text-lg font-semibold mb-2">
-                            FIR (Finite Impulse Response) Filters
-                          </h3>
-                          <p className="text-gray-600">
-                            FIR filters are digital filters with a finite
-                            impulse response. They are always stable and can
-                            have exact linear phase, but typically require more
-                            computation and memory than IIR filters for similar
-                            filtering characteristics.
-                          </p>
-                          <ul className="list-disc list-inside space-y-2 text-gray-600 mt-2">
-                            <li>Always stable</li>
-                            <li>Can have exactly linear phase</li>
+                          <img
+                            src={iirCheby}
+                            className="w-full rounded-lg"
+                            alt=""
+                          />
+                          <h5 className="text-lg mt-2 font-semibold">
+                            IIR Chebyshev Filter
+                          </h5>
+                          <ul className="mt-5 pl-3 list-disc list-inside space-y-2 text-gray-600">
                             <li>
-                              Higher order required for sharp cutoff frequencies
+                              <strong>Purpose</strong>: Provide sharper roll-off
+                              than Butterworth filters for applications
+                              requiring better selectivity.
                             </li>
                             <li>
-                              Examples: Moving average, windowed-sinc filters
+                              <strong>Process</strong>: Designed in analog form
+                              (Type I or II) and converted to digital using
+                              methods like bilinear transformation.
+                            </li>
+                            <li>
+                              <strong>Advantages</strong>: Steeper roll-off,
+                              fewer filter stages for a given specification.
+                            </li>
+                            <li>
+                              <strong>Disadvantages</strong>: Introduces ripples
+                              in either the passband (Type I) or stopband (Type
+                              II), which may distort signals.
+                            </li>
+                            <li>
+                              <strong>Applications</strong>: Radar systems,
+                              control systems, and instrumentation.
                             </li>
                           </ul>
                         </div>
                       </div>
+                      <div className="grid grid-cols-2 gap-6 mt-5">
+                        <div>
+                          <img
+                            src={iirBil}
+                            className="w-full rounded-lg"
+                            alt=""
+                          />
+                          <h5 className="text-lg mt-2 font-semibold">
+                            Bilinear Transformation
+                          </h5>
+                          <ul className="mt-5 pl-3 list-disc list-inside space-y-2 text-gray-600">
+                            <li>
+                              <strong>Purpose</strong>: Convert analog filters
+                              to digital filters while avoiding aliasing.
+                            </li>
+                            <li>
+                              <strong>Process</strong>: Maps the analog s-plane
+                              to the digital z-plane using a transformation
+                              equation and applies frequency pre-warping to
+                              handle warping effects.
+                            </li>
+                            <li>
+                              <strong>Advantages</strong>: Maps the analog
+                              s-plane to the digital z-plane using a
+                              transformation equation and applies frequency
+                              pre-warping to handle warping effects.
+                            </li>
+                            <li>
+                              <strong>Disadvantages</strong>: Introduces
+                              frequency warping, requiring pre-warping
+                              adjustments.
+                            </li>
+                            <li>
+                              <strong>Applications</strong>: Digital filter
+                              design for communication and real-time systems.
+                            </li>
+                          </ul>
+                        </div>
+                        <div>
+                          <img
+                            src={iirImp}
+                            className="w-full rounded-lg"
+                            alt=""
+                          />
+                          <h5 className="text-lg mt-2 font-semibold">
+                            Impulse Invariant Transformation
+                          </h5>
+                          <ul className="mt-5 pl-3 list-disc list-inside space-y-2 text-gray-600">
+                            <li>
+                              <strong>Purpose</strong>: Preserve the impulse
+                              response of the analog filter when converting to
+                              digital.
+                            </li>
+                            <li>
+                              <strong>Process</strong>: Samples the analog
+                              filter's impulse response and reconstructs a
+                              digital equivalent.
+                            </li>
+                            <li>
+                              <strong>Advantages</strong>: Maintains time-domain
+                              characteristics, simple to implement.
+                            </li>
+                            <li>
+                              <strong>Disadvantages</strong>: Susceptible to
+                              aliasing, unsuitable for high-frequency designs
+                            </li>
+                            <li>
+                              <strong>Applications</strong>: Audio synthesis,
+                              low-frequency signal processing, and simulation of
+                              analog systems.
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="space-y-4 mt-20">
+                      <h4 className="text-xl mt-2 font-semibold">
+                        FIR (Finite Impulse Response):
+                      </h4>
+                      <p className="mt-2">
+                        These filters are digital filters whose output depends
+                        only on current and past input values, with no feedback.
+                        They are inherently stable and can have linear phase,
+                        making them ideal for applications requiring phase
+                        accuracy. FIR filters are widely used in audio
+                        processing, image filtering, and data smoothing.
+                      </p>
+
+                      <p className="mt-10">
+                        <strong>
+                          Windowing techniques in FIR filter design
+                        </strong>{" "}
+                        involve multiplying the ideal filter impulse response by
+                        a window function to achieve a finite impulse response.
+                        These techniques help minimize artifacts like Gibbs
+                        oscillations and control the trade-off between main lobe
+                        width (transition band) and side lobe level (stopband
+                        attenuation). Here are the key windowing techniques:
+                      </p>
+                      <img src={fir1} alt="" className="w-full" />
+                      <h4 className="text-lg mt-2 font-semibold">
+                        Equations for every Windowing Techniques:{" "}
+                      </h4>
+                      <img src={fir2} alt="" className="w-full" />
                     </div>
                   </CardContent>
                 </Card>
