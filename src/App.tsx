@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { User2, Activity, Cpu, Briefcase } from "lucide-react";
+import { User2, Cpu, Briefcase } from "lucide-react";
 import Butterfly2 from "@/assets/butterfly-2.png";
 import Butterfly1 from "@/assets/butterfly-1.jpg";
 import dft1 from "@/assets/dft-1.jpg";
