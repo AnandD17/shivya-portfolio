@@ -757,224 +757,279 @@ export default function App() {
           </TabsContent>
 
           <TabsContent value="projects" className="pt-10">
-            <Card>
-              <CardContent className="p-6">
-                <h2 className="text-xl font-semibold mb-6">Projects</h2>
-                <div className="px-3">
-                  <div className="grid grid-cols-4 gap-6">
-                    <div className="col-span-1">
-                      <img
-                        src={project1}
-                        className="w-full rounded-lg"
-                        alt=""
-                      />
-                      <img
-                        src={project2}
-                        className="w-full rounded-lg"
-                        alt=""
-                      />
+            <Tabs>
+              <TabsList className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <TabsTrigger value="dsp">DSP</TabsTrigger>
+                <TabsTrigger value="cmos">CMOS</TabsTrigger>
+                <TabsTrigger value="mini">Mini Project</TabsTrigger>
+              </TabsList>
+              <TabsContent value="dsp">
+                <Card>
+                  <CardContent className="p-6">
+                    <h2 className="text-xl font-semibold mb-6">Projects</h2>
+                    <div className="px-3">
+                      <div className="grid grid-cols-4 gap-6">
+                        <div className="col-span-1">
+                          <img
+                            src={project1}
+                            className="w-full rounded-lg"
+                            alt=""
+                          />
+                          <img
+                            src={project2}
+                            className="w-full rounded-lg"
+                            alt=""
+                          />
+                        </div>
+                        <div className="col-span-3">
+                          The TMS320C6678 is a high-performance Digital Signal
+                          Processor (DSP) from Texas Instruments, capable of
+                          handling both floating-point and fixed-point
+                          operations at speeds up to 1.25 GHz. It boasts
+                          advanced features such as multiple core architecture,
+                          L1/L2 caches, and a range of external memory
+                          interfaces. The processor is equipped with a variety
+                          of integrated peripherals, including UART, SPI, I2C,
+                          USB, and Gigabit Ethernet. Delivering up to 144 GFLOPS
+                          and optimized for low power consumption, it is ideal
+                          for applications in telecommunications, automotive,
+                          medical imaging, and industrial control. Code Composer
+                          Studio (CCS) provides a robust development environment
+                          for efficient programming and debugging.
+                        </div>
+                      </div>
+                      <div className="mt-6">
+                        <h4 className="text-lg font-semibold mb-2">
+                          IIR low pass Filter
+                        </h4>
+                        <p>
+                          In this MATLAB code, an IIR low-pass filter is
+                          designed using a Butterworth filter to f ilter an
+                          audio signal. The code first loads and converts the
+                          audio signal to mono, then extracts the first 3
+                          seconds of audio. The FFT is computed to analyze the
+                          frequency spectrum of both the original and filtered
+                          signals, and the filter is designed with a cutoff
+                          frequency of 1000 Hz to pass lower frequencies and
+                          attenuate higher ones. The filter is applied using
+                          zero-phase filtering via the filtfilt() function to
+                          avoid phase distortion. The frequency response of the
+                          filter and the time-domain waveforms of the original
+                          and f iltered signals are plotted, and the audio
+                          signals are played to compare the effect of the
+                          low-pass filtering. This method effectively reduces
+                          high-frequency noise while preserving the
+                          low-frequency components of the signal
+                        </p>
+                      </div>
+                      <div className="mt-6">
+                        <h4 className="text-lg font-semibold mb-2">
+                          MATLAB Code for Audio Signal Filtering with IIR
+                          Low-pass Filter
+                        </h4>
+                        <p>
+                          % Load the audio or instrument signal
+                          <br />
+                          filename = 'WhatsApp Audio 2025-01-04 at 5.08.25
+                          PM_1.aac'; % Replace with your uploaded file name
+                          <br />
+                          if ~isfile(filename)
+                          <br />
+                          error(['The file "', filename, '" was not found in the
+                          current folder or MATLAB Drive.']);
+                          <br />
+                          end
+                          <br />
+                          % Read the audio file
+                          <br />
+                          [x, Fs] = audioread(filename); % Read audio signal and
+                          sampling frequency
+                          <br />
+                          x = mean(x, 2); % Convert to mono if stereo
+                          <br />
+                          % Extract the first 3 seconds of the audio
+                          <br />
+                          num_samples = min(3 * Fs, length(x)); % Limit to 3
+                          seconds or less if shorter
+                          <br />
+                          x_3s = x(1:num_samples);
+                          <br />
+                          % Analyze the Frequency Spectrum of the Original
+                          Signal
+                          <br />
+                          N = length(x_3s);
+                          <br />
+                          fft_x = fft(x_3s); % FFT of the signal
+                          <br />
+                          f = (0:N-1) * (Fs / N); % Frequency vector
+                          <br />
+                          figure;
+                          <br />
+                          plot(f(1:N/2), abs(fft_x(1:N/2))); % Single-sided
+                          spectrum
+                          <br />
+                          title('Frequency Spectrum of Original Audio');
+                          <br />
+                          xlabel('Frequency (Hz)');
+                          <br />
+                          ylabel('Magnitude');
+                          <br />
+                          grid on;
+                          <br />
+                          % Design the FIR Low-pass Filter
+                          <br />
+                          filter_order = 100; % Higher order for sharper cutoff
+                          <br />
+                          fc = 1000; % Cutoff frequency (1 kHz)
+                          <br />
+                          Wn = fc / (Fs / 2); % Normalize cutoff frequency (Fs/2
+                          is the Nyquist frequency)
+                          <br />
+                          b = fir1(filter_order, Wn, 'low',
+                          hamming(filter_order+1)); % FIR filter coefficients
+                          <br />
+                          a = 1; % FIR filter denominator (FIR filters have no
+                          denominator)
+                          <br />
+                          % Apply the FIR filter using Zero-phase Filtering
+                          <br />
+                          y_3s = filtfilt(b, a, x_3s);
+                          <br />
+                          % Plot the Frequency Spectrum of the Filtered Signal
+                          <br />
+                          fft_y = fft(y_3s);
+                          <br />
+                          figure;
+                          <br />
+                          plot(f(1:N/2), abs(fft_y(1:N/2)));
+                          <br />
+                          title('Frequency Spectrum of Filtered Audio');
+                          <br />
+                          xlabel('Frequency (Hz)');
+                          <br />
+                          ylabel('Magnitude');
+                          <br />
+                          grid on;
+                          <br />
+                          % Plot the Frequency Response of the FIR Filter
+                          <br />
+                          [H, f_response] = freqz(b, a, 1024, Fs);
+                          <br />
+                          figure;
+                          <br />
+                          plot(f_response, abs(H));
+                          <br />
+                          title('Frequency Response of the FIR Low-pass
+                          Filter');
+                          <br />
+                          xlabel('Frequency (Hz)');
+                          <br />
+                          ylabel('Magnitude');
+                          <br />
+                          grid on;
+                          <br />
+                          % Play the Original 3-Second Audio Signal
+                          <br />
+                          disp('Playing original 3-second audio...');
+                          <br />
+                          sound(x_3s, Fs);
+                          <br />
+                          pause(length(x_3s) / Fs + 1);
+                          <br />
+                          % Play the Low-pass Filtered 3-Second Audio Signal
+                          <br />
+                          disp('Playing filtered 3-second audio...');
+                          <br />
+                          sound(y_3s, Fs);
+                          <br />
+                          pause(length(y_3s) / Fs + 1);
+                          <br />
+                          % Plot the Original and Filtered Signals in Time
+                          Domain
+                          <br />
+                          t = (0:length(x_3s)-1) / Fs; % Time vector for 3
+                          seconds
+                          <br />
+                          figure;
+                          <br />
+                          subplot(2, 1, 1);
+                          <br />
+                          plot(t, x_3s);
+                          <br />
+                          title('Original 3-Second Audio Signal');
+                          <br />
+                          xlabel('Time (s)');
+                          <br />
+                          ylabel('Amplitude');
+                          <br />
+                          grid on;
+                          <br />
+                          subplot(2, 1, 2);
+                          <br />
+                          plot(t, y_3s);
+                          <br />
+                          title('Low-pass Filtered 3-Second Audio Signal');
+                          <br />
+                          xlabel('Time (s)');
+                          <br />
+                          ylabel('Amplitude');
+                          <br />
+                          grid on;
+                          <br />
+                        </p>
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-semibold mb-2">Result</h4>
+                        <img
+                          src={project3}
+                          alt="Result"
+                          className="w-full max-w-[1000px] rounded-lg"
+                        />
+                      </div>
                     </div>
-                    <div className="col-span-3">
-                      The TMS320C6678 is a high-performance Digital Signal
-                      Processor (DSP) from Texas Instruments, capable of
-                      handling both floating-point and fixed-point operations at
-                      speeds up to 1.25 GHz. It boasts advanced features such as
-                      multiple core architecture, L1/L2 caches, and a range of
-                      external memory interfaces. The processor is equipped with
-                      a variety of integrated peripherals, including UART, SPI,
-                      I2C, USB, and Gigabit Ethernet. Delivering up to 144
-                      GFLOPS and optimized for low power consumption, it is
-                      ideal for applications in telecommunications, automotive,
-                      medical imaging, and industrial control. Code Composer
-                      Studio (CCS) provides a robust development environment for
-                      efficient programming and debugging.
+                  </CardContent>
+                </Card>
+              </TabsContent>
+              <TabsContent value="cmos">
+                <Card>
+                  <CardContent className="p-6">
+                    <h2 className="text-xl font-semibold mb-6">CMOS</h2>
+                    <a
+                      href="http://res.cloudinary.com/drfwhfrg1/raw/upload/v1738737466/me/n9zbnrsdwah5asvp92wy.pptx"
+                      className="bg-violet-500 text-white px-4 py-2 rounded-md hover:bg-violet-600 transition-colors"
+                    >
+                      Download Report
+                    </a>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+              <TabsContent value="mini">
+                <Card>
+                  <CardContent className="p-6">
+                    <h2 className="text-xl font-semibold mb-6">Mini Project</h2>
+                    <div className="flex items-center gap-4">
+                      <a
+                        href="http://res.cloudinary.com/drfwhfrg1/image/upload/v1738738009/vdoic4s9cdx5aidddssv.pdf"
+                        className="bg-violet-500 text-white px-4 py-2 rounded-md hover:bg-violet-600 transition-colors"
+                      >
+                        Download Mini Project Report
+                      </a>
+                      <a
+                        href="http://res.cloudinary.com/drfwhfrg1/raw/upload/v1738738008/xebwsiilbkqdklzrszlc.pptx"
+                        className="bg-violet-500 text-white px-4 py-2 rounded-md hover:bg-violet-600 transition-colors"
+                      >
+                        Download Mini Project PPT
+                      </a>
                     </div>
-                  </div>
-                  <div className="mt-6">
-                    <h4 className="text-lg font-semibold mb-2">
-                      IIR low pass Filter
-                    </h4>
-                    <p>
-                      In this MATLAB code, an IIR low-pass filter is designed
-                      using a Butterworth filter to f ilter an audio signal. The
-                      code first loads and converts the audio signal to mono,
-                      then extracts the first 3 seconds of audio. The FFT is
-                      computed to analyze the frequency spectrum of both the
-                      original and filtered signals, and the filter is designed
-                      with a cutoff frequency of 1000 Hz to pass lower
-                      frequencies and attenuate higher ones. The filter is
-                      applied using zero-phase filtering via the filtfilt()
-                      function to avoid phase distortion. The frequency response
-                      of the filter and the time-domain waveforms of the
-                      original and f iltered signals are plotted, and the audio
-                      signals are played to compare the effect of the low-pass
-                      filtering. This method effectively reduces high-frequency
-                      noise while preserving the low-frequency components of the
-                      signal
-                    </p>
-                  </div>
-                  <div className="mt-6">
-                    <h4 className="text-lg font-semibold mb-2">
-                      MATLAB Code for Audio Signal Filtering with IIR Low-pass
-                      Filter
-                    </h4>
-                    <p>
-                      % Load the audio or instrument signal
-                      <br />
-                      filename = 'WhatsApp Audio 2025-01-04 at 5.08.25
-                      PM_1.aac'; % Replace with your uploaded file name
-                      <br />
-                      if ~isfile(filename)
-                      <br />
-                      error(['The file "', filename, '" was not found in the
-                      current folder or MATLAB Drive.']);
-                      <br />
-                      end
-                      <br />
-                      % Read the audio file
-                      <br />
-                      [x, Fs] = audioread(filename); % Read audio signal and
-                      sampling frequency
-                      <br />
-                      x = mean(x, 2); % Convert to mono if stereo
-                      <br />
-                      % Extract the first 3 seconds of the audio
-                      <br />
-                      num_samples = min(3 * Fs, length(x)); % Limit to 3 seconds
-                      or less if shorter
-                      <br />
-                      x_3s = x(1:num_samples);
-                      <br />
-                      % Analyze the Frequency Spectrum of the Original Signal
-                      <br />
-                      N = length(x_3s);
-                      <br />
-                      fft_x = fft(x_3s); % FFT of the signal
-                      <br />
-                      f = (0:N-1) * (Fs / N); % Frequency vector
-                      <br />
-                      figure;
-                      <br />
-                      plot(f(1:N/2), abs(fft_x(1:N/2))); % Single-sided spectrum
-                      <br />
-                      title('Frequency Spectrum of Original Audio');
-                      <br />
-                      xlabel('Frequency (Hz)');
-                      <br />
-                      ylabel('Magnitude');
-                      <br />
-                      grid on;
-                      <br />
-                      % Design the FIR Low-pass Filter
-                      <br />
-                      filter_order = 100; % Higher order for sharper cutoff
-                      <br />
-                      fc = 1000; % Cutoff frequency (1 kHz)
-                      <br />
-                      Wn = fc / (Fs / 2); % Normalize cutoff frequency (Fs/2 is
-                      the Nyquist frequency)
-                      <br />
-                      b = fir1(filter_order, Wn, 'low',
-                      hamming(filter_order+1)); % FIR filter coefficients
-                      <br />
-                      a = 1; % FIR filter denominator (FIR filters have no
-                      denominator)
-                      <br />
-                      % Apply the FIR filter using Zero-phase Filtering
-                      <br />
-                      y_3s = filtfilt(b, a, x_3s);
-                      <br />
-                      % Plot the Frequency Spectrum of the Filtered Signal
-                      <br />
-                      fft_y = fft(y_3s);
-                      <br />
-                      figure;
-                      <br />
-                      plot(f(1:N/2), abs(fft_y(1:N/2)));
-                      <br />
-                      title('Frequency Spectrum of Filtered Audio');
-                      <br />
-                      xlabel('Frequency (Hz)');
-                      <br />
-                      ylabel('Magnitude');
-                      <br />
-                      grid on;
-                      <br />
-                      % Plot the Frequency Response of the FIR Filter
-                      <br />
-                      [H, f_response] = freqz(b, a, 1024, Fs);
-                      <br />
-                      figure;
-                      <br />
-                      plot(f_response, abs(H));
-                      <br />
-                      title('Frequency Response of the FIR Low-pass Filter');
-                      <br />
-                      xlabel('Frequency (Hz)');
-                      <br />
-                      ylabel('Magnitude');
-                      <br />
-                      grid on;
-                      <br />
-                      % Play the Original 3-Second Audio Signal
-                      <br />
-                      disp('Playing original 3-second audio...');
-                      <br />
-                      sound(x_3s, Fs);
-                      <br />
-                      pause(length(x_3s) / Fs + 1);
-                      <br />
-                      % Play the Low-pass Filtered 3-Second Audio Signal
-                      <br />
-                      disp('Playing filtered 3-second audio...');
-                      <br />
-                      sound(y_3s, Fs);
-                      <br />
-                      pause(length(y_3s) / Fs + 1);
-                      <br />
-                      % Plot the Original and Filtered Signals in Time Domain
-                      <br />
-                      t = (0:length(x_3s)-1) / Fs; % Time vector for 3 seconds
-                      <br />
-                      figure;
-                      <br />
-                      subplot(2, 1, 1);
-                      <br />
-                      plot(t, x_3s);
-                      <br />
-                      title('Original 3-Second Audio Signal');
-                      <br />
-                      xlabel('Time (s)');
-                      <br />
-                      ylabel('Amplitude');
-                      <br />
-                      grid on;
-                      <br />
-                      subplot(2, 1, 2);
-                      <br />
-                      plot(t, y_3s);
-                      <br />
-                      title('Low-pass Filtered 3-Second Audio Signal');
-                      <br />
-                      xlabel('Time (s)');
-                      <br />
-                      ylabel('Amplitude');
-                      <br />
-                      grid on;
-                      <br />
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold mb-2">Result</h4>
                     <img
-                      src={project3}
-                      alt="Result"
-                      className="w-full max-w-[1000px] rounded-lg"
+                      src="https://res.cloudinary.com/drfwhfrg1/image/upload/v1738737800/e6girlmttaicdqmpgsvg.jpg"
+                      className="mt-5 w-full rounded-lg"
+                      alt=""
                     />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+            </Tabs>
           </TabsContent>
 
           {/* <TabsContent value="activities" className="pt-10">
